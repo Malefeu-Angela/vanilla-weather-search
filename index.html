@@ -14,34 +14,48 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <h1>Pretoria</h1>
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <h1>Pretoria</h1>
 
-        <div class="row">
-          <div class="col-6">
-            <ul>
-              <li>
-                <span>Wednesday 07:58</span>
-                , overcast clouds
-              </li>
-              <li>
-                Humidity: <strong>80%</strong> , Wind: <strong>1.03km/h</strong>
-              </li>
-            </ul>
-          </div>
+          <div class="row">
+            <div class="col-6">
+              <ul>
+                <li>
+                  <span>Wednesday 07:58</span>
+                  , overcast clouds
+                </li>
+                <li>
+                  Humidity: <strong>80%</strong> , Wind:
+                  <strong>1.03km/h</strong>
+                </li>
+              </ul>
+            </div>
 
-          <div class="col-6">
-            <img src="image/weather.png" alt="rainy" />
-            12 °C| °F
+            <div class="col-6">
+              <div class="d-flex weather-temperature">
+                <img src="image/weather.png" alt="rainy" />
+                <div>
+                  <span class="temperature">12 </span>
+                  <span class="unit"
+                    >°C|
+                    <a href="#">°F </a>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <small>
+        <a href="https://github.com/Malefeu-Angela/vanilla-weather-search">
+          open-source code</a
+        >
+        by Malefeu Angela
+      </small>
     </div>
-    <small>
-      <a href="https://github.com/Malefeu-Angela/vanilla-weather-search">
-        open-source code</a
-      >by Malefeu Angela
-    </small>
+
     <script src="src/index.js"></script>
   </body>
 </html>
