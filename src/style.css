@@ -25,6 +25,8 @@ li {
 }
 
 .weather-app {
+  max-width: 800px;
+  margin: 60px auto;
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
@@ -61,4 +63,12 @@ li {
   line-height: 1;
   position: relative;
   top: -34px;
+}
+
+.weather-app footer {
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 40px;
+  text-align: center;
 }
