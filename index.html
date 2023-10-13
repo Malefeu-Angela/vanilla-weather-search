@@ -19,27 +19,30 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <h1>Pretoria</h1>
+          <h1 id="city"></h1>
 
           <div class="row">
             <div class="col-6">
               <ul>
                 <li>
                   <span>Wednesday 07:58</span>
-                  , overcast clouds
+                  , <strong id="description"></strong>
                 </li>
                 <li>
-                  Humidity: <strong>80%</strong> , Wind:
+                  Humidity: <span id="humidity"></span> <strong>80%</strong> ,
+                  Wind: <span id="wind"></span>
                   <strong>1.03km/h</strong>
                 </li>
               </ul>
             </div>
 
             <div class="col-6">
-              <div class="d-flex weather-temperature">
+              <div class="d-flex weather-codition">
                 <img src="image/weather.png" alt="rainy" />
                 <div>
-                  <span class="temperature">12 </span>
+                  <span class="temperature">
+                    <strong id="temperature"></strong>
+                  </span>
                   <span class="unit"
                     >°C|
                     <a href="#">°F </a>
