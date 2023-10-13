@@ -23,14 +23,13 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
-
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
-  let descriptionElemnet = document.querySelector("#description");
+  let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
-  let windElementElement = document.querySelector("#wind");
+  let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
@@ -38,9 +37,27 @@ function displayTemperature(response) {
   humidityElementElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = response.data.wind.speed;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
-let apikey = "a105bf90a407023abfboc7aeet447b59";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Pretoria&key=${apikey}&units=metric`;
+function search(city) {
+  let apikey = "a105bf90a407023abfboc7aeet447b59";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Pretoria&key=${apikey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("pretoria");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
