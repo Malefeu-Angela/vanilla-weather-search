@@ -1,13 +1,15 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
   }
-  let minutes = date.getDate();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
+
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
   }
+
   let days = [
     "Sunday",
     "Monday",
@@ -18,11 +20,12 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${hour} ${minute}`;
 }
 
-function displayTemperature(response) {
+function displayWeather(response) {
+  console.log(response.data);
+
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -34,21 +37,22 @@ function displayTemperature(response) {
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
-  humidityElementElement.innerHTML = response.data.temperature.humidity;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = response.data.wind.speed;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/${response.data.condition.icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icon/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 function search(city) {
   let apikey = "a105bf90a407023abfboc7aeet447b59";
+
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Pretoria&key=${apikey}&units=metric`;
 
-  axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayWeather);
 }
 
 function handleSubmit(event) {
