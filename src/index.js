@@ -27,6 +27,7 @@ function displayWeather(response) {
 
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
+
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
@@ -51,7 +52,7 @@ function displayWeather(response) {
 function search(city) {
   let apikey = "a105bf90a407023abfboc7aeet447b59";
 
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Pretoria&key=${apikey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric`;
 
   axios.get(apiUrl).then(displayWeather);
 }
@@ -64,14 +65,21 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("temperature");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  temperatureElement.innerHTML = Maths.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  let temperatureElement = document.querySelector("temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
