@@ -76,3 +76,11 @@ li::first-letter {
   margin-top: 40px;
   text-align: center;
 }
+
+.weather-app .Active {
+  color: rgba(33, 33, 33);
+  cursor: default;
+}
+.weather-app .Active:hover {
+  text-decoration: none;
+}
